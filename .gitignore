@@ -2,5 +2,6 @@ venv/
 credentials.json
 token.json
 *.xlsx
+last_scan.txt
 __pycache__/
 *.pyc

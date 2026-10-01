@@ -30,9 +30,13 @@ KEYWORDS = [
 ]
 
 
-def build_search_query():
+def build_search_query(after_date: str | None = None) -> str:
+    """Build the Gmail search query. after_date, if given, must be YYYY/MM/DD."""
     keyword_clause = " OR ".join(f'"{kw}"' for kw in KEYWORDS)
-    return f"category:primary ({keyword_clause})"
+    query = f"category:primary ({keyword_clause})"
+    if after_date:
+        query += f" after:{after_date}"
+    return query
 
 
 def get_sender_domain(sender_header):
